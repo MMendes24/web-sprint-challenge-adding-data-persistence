@@ -1,11 +1,10 @@
-
 exports.up = function (knex) {
     return knex.schema
         .createTable('projects', tbl => {
             tbl.increments()
             tbl.text('name', 255).notNullable().unique()
             tbl.text('desc', 255)
-            tbl.boolean('completed').notNullable()
+            tbl.boolean('completed').notNullable().defaultTo(false)
         })
         .createTable('resources', tbl => {
             tbl.increments()
@@ -16,7 +15,7 @@ exports.up = function (knex) {
             tbl.increments()
             tbl.text('desc', 255).notNullable()
             tbl.text('notes', 255)
-            tbl.boolean('completed').notNullable()
+            tbl.boolean('completed').notNullable().defaultTo(false)
 
             tbl.integer('project_id')
                 .unsigned()
