@@ -33,4 +33,34 @@ router.get('/tasks', (req, res) => {
         })
 })
 
+router.post('/projects', (req, res) => {
+    Projects.addProject(req.body)
+    .then(thenRes => {
+        res.status(201).json(thenRes)
+    })
+    .catch(err => {
+        res.status(400).json({ errorMessage: "Could not add item due to bad data!" })
+    })
+})
+
+router.post('/resources', (req, res) => {
+    Projects.addResource(req.body)
+    .then(thenRes => {
+        res.status(201).json(thenRes)
+    })
+    .catch(err => {
+        res.status(400).json({ errorMessage: "Could not add item due to bad data!" })
+    })
+})
+
+router.post('/tasks', (req, res) => {
+    Projects.addTasks(req.body)
+    .then(thenRes => {
+        res.status(201).json(thenRes)
+    })
+    .catch(err => {
+        res.status(400).json({ errorMessage: "Could not add item due to bad data!" })
+    })
+})
+
 module.exports = router
